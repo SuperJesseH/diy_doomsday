@@ -1,9 +1,22 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux'
 import { Button, Form, Grid, Header, Image, Message, Segment } from 'semantic-ui-react'
+import {updateEmail} from '../actions/action'
 
 class LoginForm extends Component {
+
 // Login form from semantic
+
+handleEmailChange = event => {
+  // let input = event.target.value
+  // this.props.updateUserEmail(input)
+}
+
+
+
+handelLogin = event => {
+  debugger
+}
 
   render() {
     console.log(this.props);
@@ -26,9 +39,9 @@ class LoginForm extends Component {
             <Header as='h2' color='teal' textAlign='center'>
               <Image src='/logo.png' /> Log-in to your account
             </Header>
-            <Form size='large'>
+            <Form size='large' onSubmit={this.handelLogin}>
               <Segment stacked>
-                <Form.Input fluid icon='user' iconPosition='left' placeholder='E-mail address' />
+                <Form.Input fluid icon='user' iconPosition='left' placeholder='E-mail address' onKeyUp={this.handleChange}/>
                 <Form.Input
                   fluid
                   icon='lock'
@@ -52,17 +65,14 @@ class LoginForm extends Component {
   }
 }
 
-function mapStateToProps(state){
-  return state.key
+const mapStateToProps = (state) => {
+  return state.User
 }
 
-function mapDispatchToProps(dispatch){
+function mapDispatchToProps(dispatch) {
   return {
-    //"function name is a placeholder for a useful action "
-    functionName: paramater => {
-      dispatch({type: "ACTION_TYPE", payload: paramater})
+    updateUserEmail: (email) => dispatch(updateEmail(email))
     }
-  }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(LoginForm);

@@ -20,6 +20,7 @@ store.subscribe(()=> {
   saveState({
     // eg  auth: store.getState().token;
     //ONLY REFRENCE THE STATE YOU WANT TO SAVE IN LOCAL STORE E.G. TOKEN
+    User: store.getState().User
   })
 })
 
