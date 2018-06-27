@@ -7,7 +7,13 @@ class NavBar extends Component {
 
   render(){
     return(
-      <div>I'm the NavBar</div>
+      <div class="ui menu">
+        <a class="item">Home</a>
+        <div class="right menu">
+          <a class="item">Sign Up</a>
+          <a class="item">Help</a>
+        </div>
+      </div>
     )
   }
 }
