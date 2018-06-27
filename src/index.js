@@ -9,6 +9,7 @@ import reducer from './reducers/reducer';
 import {Provider} from 'react-redux';
 import {loadState, saveState} from './localStorage';
 
+
 const persistedState = loadState();
 const store = createStore(reducer, persistedState,
 compose(
@@ -17,6 +18,7 @@ compose(
 
 store.subscribe(()=> {
   saveState({
+    // eg  auth: store.getState().token;
     //ONLY REFRENCE THE STATE YOU WANT TO SAVE IN LOCAL STORE E.G. TOKEN
   })
 })

@@ -1,5 +1,6 @@
 const defaultState = {
-  key: "value"
+  key: "value",
+  // token: null,
 }
 
 function reducer(state = defaultState, action){
