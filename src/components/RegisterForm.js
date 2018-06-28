@@ -45,7 +45,11 @@ class RegisterForm extends Component {
       .then(json=>{
         localStorage.setItem('token', json.token)
         localStorage.setItem('id', json.id);
-      }).catch(()=>this.setState({errors:true}))
+      })
+      // THIS PROPS SIGNUPCHANGE REFACTOR FOR REDUX !!!!
+      //
+      // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+      .then(this.props.signupChange).catch(()=>this.setState({errors:true}))
     }else{
       // if data is invalid sets state to pop up an error message
       this.setState({errors:true})

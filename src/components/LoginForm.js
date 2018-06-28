@@ -33,8 +33,6 @@ handelLogin = event => {
   //checks if the basic requirements are met (email, password)
   if (userData.password && userData.email) {
     // send a post to backend to create a new user, recive a token, and unmount registration screen
-    console.log("OK IM AUTHING YOU SWEETIE!!", userData);
-
     fetch("http://localhost:3000/api/v1/sessions", {
     method: "POST",
     headers: {
@@ -44,8 +42,11 @@ handelLogin = event => {
     .then(resp=> resp.ok ? resp.json().then(json=>{
           localStorage.setItem('token', json.token)
           localStorage.setItem('id', json.id);
-            }) : this.setState({errors:true}))
-    // .then(resp=>resp.json())
+        })
+        // THIS PROPS SIGNUPCHANGE REFACTOR FOR REDUX !!!!
+        //
+        // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        .then(this.props.signupChange) : this.setState({errors:true}))
   }else{
     // if data is invalid sets state to pop up an error message
     this.setState({errors:true})
@@ -93,7 +94,7 @@ handelLogin = event => {
               </Segment>
             </Form>
             <Message>
-              New to us? <a href='#'>Sign Up</a>
+              New to us? <a href='#' onClick={this.props.signUp}>Sign Up</a>
             </Message>
           </Grid.Column>
         </Grid>
