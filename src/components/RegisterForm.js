@@ -40,12 +40,12 @@ class RegisterForm extends Component {
       headers: {
         "Content-Type": "application/json"
       },
-      body: JSON.stringify(userData)}).then(resp=>resp.json()).then(console.log)
-      //
-      // .then(json=> { localStorage.setItem('token', json.token)
-      // localStorage.setItem('id', json.id);
-      // })
-
+      body: JSON.stringify(userData)})
+      .then(resp=>resp.json())
+      .then(json=>{
+        localStorage.setItem('token', json.token)
+        localStorage.setItem('id', json.id);
+          })
     }else{
       // if data is invalid sets state to pop up an error message
       this.setState({errors:true})
