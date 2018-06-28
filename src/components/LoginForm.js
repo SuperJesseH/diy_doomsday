@@ -41,7 +41,8 @@ handelLogin = event => {
             </Header>
             <Form size='large' onSubmit={this.handelLogin}>
               <Segment stacked>
-                <Form.Input fluid icon='user' iconPosition='left' placeholder='E-mail address' onKeyUp={this.handleChange}/>
+                <Form.Input fluid icon='envelope outline
+                ' iconPosition='left' placeholder='E-mail address' onKeyUp={this.handleChange}/>
                 <Form.Input
                   fluid
                   icon='lock'

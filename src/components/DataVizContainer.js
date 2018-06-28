@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux'
 
-var LineChart = require("react-chartjs").Line;
+// var LineChart = require("react-chartjs").Line;
+
+import { Line, Pie } from "react-chartjs"
 
 class DataVizContainer extends Component {
 
@@ -32,6 +34,16 @@ class DataVizContainer extends Component {
         }]
     }
 
+    const chartData2 = [
+            {color: "blue", label: "test1", value: 1},
+            {color: "red", label: "test2", value: 2},
+            {color: "yellow", label: "test3", value: 3},
+            {color: "purple", label: "test5", value: 2},
+            {color: "green", label: "test4", value: 1},
+            {color: "pink", label: "test6", value: 1},
+
+        ]
+
     const chartOptions = {
         scales: {
             yAxes: [{
@@ -41,9 +53,16 @@ class DataVizContainer extends Component {
             }]
         }
     }
+
+    const chartOptions2 = {
+      cutoutPercentage: 50,
+      animateRotate: true
+    }
+
     return(
       <div>
-        <LineChart data={chartData} options={chartOptions} width="600" height="250"/>
+        <Line data={chartData} options={chartOptions} width="600" height="250"/>
+        <Pie data={chartData2}  options={chartOptions2}width="600" />
       </div>
     )
   }

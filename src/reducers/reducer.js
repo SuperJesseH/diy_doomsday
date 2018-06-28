@@ -1,6 +1,6 @@
 const defaultState = {
-  User: {email:"hi"},
-  // token: null,
+  User: {id:null, token:null},
+  LoggedIn: false,
 }
 
 function reducer(state = defaultState, action){
