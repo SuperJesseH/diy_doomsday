@@ -60,7 +60,7 @@ class DataVizContainer extends Component {
     }
 
     return(
-      <div>
+      <div className="ui grid">
         <Line data={chartData} options={chartOptions} width="600" height="250"/>
         <Pie data={chartData2}  options={chartOptions2}width="600" />
       </div>

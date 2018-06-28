@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Button } from 'semantic-ui-react'
 import LoginForm from './components/LoginForm'
 import RegisterForm from './components/RegisterForm'
 import ProfileContainer from './components/ProfileContainer'
@@ -15,7 +14,7 @@ class App extends Component {
     }
   }
 
-  /* // THESE FUNCTIONS REFACTOR FOR REDUX !!!!
+  /* // THESE FUNCTIONS: REFACTOR FOR REDUX !!!!
   //
   // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! */
 
@@ -24,17 +23,17 @@ class App extends Component {
   }
 
   toggleSign = () =>{
-    this.setState({signIn:true})
+    this.setState({signIn: !this.state.signIn})
     console.log("hi");
   }
 
   render() {
     return (
       <div className="App">
-        {/* // THIS PROPS SIGNUPCHANGE REFACTOR FOR REDUX !!!!
+        {/* // THIS toggleSign REFACTOR FOR REDUX !!!!
         //
         // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! */}
-        {localStorage.id && localStorage.id !== "undefined" ? <ProfileContainer  /> : this.state.register ? <RegisterForm signupChange={this.toggleSign}/> : <LoginForm signUp={this.activateRegister} signupChange={this.toggleSign}/>}
+        {localStorage.id && localStorage.id !== "undefined" ? <ProfileContainer /> : this.state.register ? <RegisterForm signupChange={this.toggleSign}/> : <LoginForm signUp={this.activateRegister} signupChange={this.toggleSign}/>}
       </div>
     );
   }
