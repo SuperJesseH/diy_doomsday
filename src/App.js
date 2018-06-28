@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Button } from 'semantic-ui-react'
 import LoginForm from './components/LoginForm'
-import RegisterForm from './components/RegisterForm' 
+import RegisterForm from './components/RegisterForm'
 import NavBar from './components/Navbar'
 import DataVizContainer from './components/DataVizContainer'
 import DataSelector from './components/DataSelector'

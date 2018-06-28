@@ -15,7 +15,33 @@ handleEmailChange = event => {
 
 
 handelLogin = event => {
-  debugger
+  // grabs all form data out of the event and packages it in an object
+  let userData = {}
+  for (let target of event.target){
+    if (target.placeholder){
+    userData = {...userData, [target.placeholder]:target.value}
+    }
+  }
+  //checks if the basic requirements are met (email, password)
+  if (userData.password && userData.email) {
+    // send a post to backend to create a new user, recive a token, and unmount registration screen
+    console.log("OK IM AUTHING YOU SWEETIE!!", userData);
+
+    fetch("http://localhost:3000/api/v1/sessions", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(userData)})
+    .then(resp=>resp.json())
+    .then(json=>{
+      localStorage.setItem('token', json.token)
+      localStorage.setItem('id', json.id);
+        })
+  }else{
+    // if data is invalid sets state to pop up an error message
+    this.setState({errors:true})
+  }
 }
 
   render() {
@@ -42,12 +68,12 @@ handelLogin = event => {
             <Form size='large' onSubmit={this.handelLogin}>
               <Segment stacked>
                 <Form.Input fluid icon='envelope outline
-                ' iconPosition='left' placeholder='E-mail address' onKeyUp={this.handleChange}/>
+                ' iconPosition='left' placeholder='email' onKeyUp={this.handleChange}/>
                 <Form.Input
                   fluid
                   icon='lock'
                   iconPosition='left'
-                  placeholder='Password'
+                  placeholder='password'
                   type='password'
                 />
 

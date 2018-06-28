@@ -31,7 +31,7 @@ class RegisterForm extends Component {
     }
 
     //checks if the basic requirements are met (name, email, password)
-    if (userData.password && userData.name && userData.email && userData["ConfirmPassword"] == userData.password){
+    if (userData.password && userData.name && userData.email && userData["confirm password"] == userData.password){
       // send a post to backend to create a new user, recive a token, and unmount registration screen
       console.log("OK IM AUTHING YOU SWEETIE!!", userData);
 
@@ -99,7 +99,7 @@ class RegisterForm extends Component {
                     fluid
                     icon='lock'
                     iconPosition='left'
-                    placeholder='ConfirmPassword'
+                    placeholder='confirm password'
                     type='password'
                   />
 
