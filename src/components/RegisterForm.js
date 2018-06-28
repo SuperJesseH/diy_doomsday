@@ -31,7 +31,7 @@ class RegisterForm extends Component {
     }
 
     //checks if the basic requirements are met (name, email, password)
-    if (userData.password && userData.name && userData.email && userData["confirm password"] == userData.password){
+    if (userData.password && userData.name && userData.email && userData["confirm password"] === userData.password){
       // send a post to backend to create a new user, recive a token, and unmount registration screen
       console.log("OK IM AUTHING YOU SWEETIE!!", userData);
 
@@ -45,7 +45,7 @@ class RegisterForm extends Component {
       .then(json=>{
         localStorage.setItem('token', json.token)
         localStorage.setItem('id', json.id);
-          })
+      }).catch(()=>this.setState({errors:true}))
     }else{
       // if data is invalid sets state to pop up an error message
       this.setState({errors:true})

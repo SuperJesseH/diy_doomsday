@@ -5,6 +5,14 @@ import {updateEmail} from '../actions/action'
 
 class LoginForm extends Component {
 
+  constructor(props){
+    super(props)
+
+    this.state ={
+      errors: false
+    }
+  }
+
 // Login form from semantic
 
 handleEmailChange = event => {
@@ -33,11 +41,11 @@ handelLogin = event => {
       "Content-Type": "application/json"
     },
     body: JSON.stringify(userData)})
-    .then(resp=>resp.json())
-    .then(json=>{
-      localStorage.setItem('token', json.token)
-      localStorage.setItem('id', json.id);
-        })
+    .then(resp=> resp.ok ? resp.json().then(json=>{
+          localStorage.setItem('token', json.token)
+          localStorage.setItem('id', json.id);
+            }) : this.setState({errors:true}))
+    // .then(resp=>resp.json())
   }else{
     // if data is invalid sets state to pop up an error message
     this.setState({errors:true})
@@ -76,6 +84,8 @@ handelLogin = event => {
                   placeholder='password'
                   type='password'
                 />
+
+                {this.state.errors == true ? "Login Invalid Please Try Again" : null}
 
                 <Button color='teal' fluid size='large'>
                   Login
