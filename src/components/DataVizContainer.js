@@ -60,10 +60,14 @@ class DataVizContainer extends Component {
     }
 
     return(
-      <div className="ui grid">
-        <Line data={chartData} options={chartOptions} width="600" height="250"/>
-        <Pie data={chartData2}  options={chartOptions2}width="600" />
+      <React.Fragment>
+      <h3>Your Doomsday Stats</h3>
+      <div class="ui divider"></div>
+      <div className="ui internally celled grid">
+        <Line data={chartData} options={chartOptions}/>
+        <Pie data={chartData2}  options={chartOptions2}/>
       </div>
+    </React.Fragment>
     )
   }
 
