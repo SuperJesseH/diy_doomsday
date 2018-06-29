@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {connect} from 'react-redux'
 import { Button, Form, Grid, Header, Image, Message, Segment } from 'semantic-ui-react'
 import {updateEmail} from '../actions/action'
+import {toggleLogin} from '../actions/action'
 
 class LoginForm extends Component {
 
@@ -109,7 +110,8 @@ const mapStateToProps = (state) => {
 
 function mapDispatchToProps(dispatch) {
   return {
-    updateUserEmail: (email) => dispatch(updateEmail(email))
+    updateUserEmail: (email) => dispatch(updateEmail(email)),
+    toggleLogin: () => dispatch(toggleLogin())
     }
 }
 

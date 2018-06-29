@@ -13,6 +13,9 @@ function reducer(state = defaultState, action){
       }
       console.log(newUserEmail);
       return newUserEmail
+    case "LOGIN_TOGGLE":
+      console.log('HI IM TOGGLEING STATE');
+      return {...state, LoggedIn:!state.LoggedIn}
     default:
       return state
   }

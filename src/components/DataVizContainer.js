@@ -55,19 +55,34 @@ class DataVizContainer extends Component {
     }
 
     const chartOptions2 = {
-      cutoutPercentage: 50,
+      cutout: 50,
       animateRotate: true
     }
 
     return(
-      <React.Fragment>
+      <div>
       <h3>Your Doomsday Stats</h3>
-      <div class="ui divider"></div>
-      <div className="ui internally celled grid">
-        <Line data={chartData} options={chartOptions}/>
-        <Pie data={chartData2}  options={chartOptions2}/>
+      <div className="ui divider"></div>
+      <div className="ui statistic">
+        <div className="label">
+          Doom Index
+        </div>
+
+        <div className="value">
+          40,509
+        </div>
+        <div className="label">
+          %Δ since yesterday
+        </div>
+        <div className="value">
+          +1.32%
+        </div>
       </div>
-    </React.Fragment>
+      <div className="ui cards">
+        <Line className="card" data={chartData} options={chartOptions}/>
+        <Pie className="card" data={chartData2}  options={chartOptions2}/>
+      </div>
+    </div>
     )
   }
 
