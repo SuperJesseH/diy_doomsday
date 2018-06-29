@@ -47,7 +47,7 @@ handelLogin = event => {
         // THIS PROPS SIGNUPCHANGE REFACTOR FOR REDUX !!!!
         //
         // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-        .then(this.props.signupChange) : this.setState({errors:true}))
+        .then(this.props.signupChange).then(this.props.toggleLogin) : this.setState({errors:true}))
   }else{
     // if data is invalid sets state to pop up an error message
     this.setState({errors:true})
@@ -87,7 +87,7 @@ handelLogin = event => {
                   type='password'
                 />
 
-                {this.state.errors == true ? "Login Invalid Please Try Again" : null}
+                {this.state.errors === true ? "Login Invalid Please Try Again" : null}
 
                 <Button color='teal' fluid size='large'>
                   Login
@@ -95,7 +95,7 @@ handelLogin = event => {
               </Segment>
             </Form>
             <Message>
-              New to us? <a href='#' onClick={this.props.signUp}>Sign Up</a>
+              New to us? <a  onClick={this.props.signUp}>Sign Up</a>
             </Message>
           </Grid.Column>
         </Grid>

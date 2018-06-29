@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {connect} from 'react-redux'
 import LoginForm from './components/LoginForm'
 import RegisterForm from './components/RegisterForm'
 import ProfileContainer from './components/ProfileContainer'
@@ -10,7 +11,6 @@ class App extends Component {
 
     this.state = {
       register : false,
-      signIn: false
     }
   }
 
@@ -22,21 +22,30 @@ class App extends Component {
     this.setState({register:true})
   }
 
-  toggleSign = () =>{
-    this.setState({signIn: !this.state.signIn})
-    console.log("hi");
-  }
-
   render() {
+          //console.log(this.props.LoggedIn);
     return (
+
       <div className="App">
         {/* // THIS toggleSign REFACTOR FOR REDUX !!!!
         //
         // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! */}
-        {localStorage.id && localStorage.id !== "undefined" ? <ProfileContainer /> : this.state.register ? <RegisterForm signupChange={this.toggleSign}/> : <LoginForm signUp={this.activateRegister} signupChange={this.toggleSign}/>}
+        {localStorage.id && localStorage.id !== "undefined" ? <ProfileContainer /> : this.state.register ? <RegisterForm /> : <LoginForm signUp={this.activateRegister} />}
       </div>
     );
   }
 }
 
-export default App;
+
+const mapStateToProps = (state) => {
+  return state
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    ///
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
+//export default App;

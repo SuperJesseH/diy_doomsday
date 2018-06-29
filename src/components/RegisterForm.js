@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux'
-import { Button, Form, Grid, Header, Image, Message, Segment } from 'semantic-ui-react'
+import { Button, Form, Grid, Header, Image, /*Message,*/ Segment } from 'semantic-ui-react'
 import {updateEmail} from '../actions/action'
 
 class RegisterForm extends Component {
@@ -107,7 +107,7 @@ class RegisterForm extends Component {
                     type='password'
                   />
 
-                  {this.state.errors == true ? "Registration Invalid Please Try Again" : null}
+                  {this.state.errors === true ? "Registration Invalid Please Try Again" : null}
 
                   <Button color='teal' fluid size='large'>
                     Login

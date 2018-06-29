@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import registerServiceWorker from './registerServiceWorker';
+//import registerServiceWorker from './registerServiceWorker';
 import './semantic/dist/semantic.min.css';
 import {createStore, compose} from 'redux';
 import reducer from './reducers/reducer';
@@ -17,11 +17,11 @@ compose(
 ))
 
 store.subscribe(()=> {
-  saveState({
+  saveState(
     // eg  auth: store.getState().token;
     //ONLY REFRENCE THE STATE YOU WANT TO SAVE IN LOCAL STORE E.G. TOKEN
-    User: store.getState().User
-  })
+    store.getState()
+  )
 })
 
 ReactDOM.render(<Provider store={store}><App /></Provider>, document.getElementById('root'))
