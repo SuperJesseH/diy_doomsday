@@ -6,3 +6,7 @@ export function updateEmail(email) {
 export function toggleLogin(){
   return {type: "LOGIN_TOGGLE", payload:null}
 }
+
+export function storeDatasets(dataJson){
+  return {type: "STORE_DATASETS", payload:dataJson}
+}
