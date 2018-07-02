@@ -7,7 +7,11 @@ class DataSet extends Component{
 
 
   render(){
-    console.log(this.props);
+    // find curent users existing weight for this dataset
+    const dataRel = this.props.UserDatasets.find((set)=>set.dataset_id === this.props.id)
+    // set dataweight to correct weight if availbe else 0
+    const dataWeight = dataRel ? dataRel.weight : 0
+
     return(
       <div className="card">
         <div className="content">
@@ -23,7 +27,7 @@ class DataSet extends Component{
       <div className="ui range">
         <Slider color="grey" inverted={false}
                 settings={{
-                start: 7,
+                start: dataWeight,
                 min:0,
                 max:10,
                 step:1,
