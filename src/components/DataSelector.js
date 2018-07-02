@@ -1,19 +1,17 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux'
 import DataSet from './DataSet'
-import UUID from 'uuid'
 
 class DataSelector extends Component{
 
 
   render(){
-    const dataSetsToRender = [1,2,3,4,5,6,7,8,9,10]
     return(
       <React.Fragment>
       <div className="ui divider"></div>
       <h3>Doom Metrics</h3>
       <div className="ui cards">
-        {dataSetsToRender.map((item)=><DataSet key={UUID()} className="card"/>)}
+        {this.props.Datasets.map((item)=><DataSet name={item.name} desc={item.desc} id={item.id} key={item.id} className="card"/>)}
       </div>
     </React.Fragment>
     )

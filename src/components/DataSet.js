@@ -1,22 +1,39 @@
 import React, { Component } from 'react';
 
 import {connect} from 'react-redux'
+import { Slider } from 'react-semantic-ui-range'
 
 class DataSet extends Component{
 
 
   render(){
+    console.log(this.props);
     return(
       <div className="card">
         <div className="content">
       <div className="header">
-        Elliot Fu
+        {this.props.name}
       </div>
       <div className="meta">
-        Friends of Veronika
+        {/* REPLACE WITH SOURCE NAME */}
+        {this.props.desc}
       </div>
       <div className="description">
-        Elliot requested permission to view your contact details
+        {this.props.desc}
+      </div>
+      <div className="ui range">
+        <Slider color="grey" inverted={false}
+                settings={{
+                start: 7,
+                min:0,
+                max:10,
+                step:1,
+                // onChange: (value) => {
+                //   this.setState({
+                //     value1:value
+                //   })
+                // }
+              }}/>
       </div>
     </div>
   </div>
