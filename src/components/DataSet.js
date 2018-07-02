@@ -15,8 +15,7 @@ class DataSet extends Component{
         {this.props.name}
       </div>
       <div className="meta">
-        {/* REPLACE WITH SOURCE NAME */}
-        {this.props.desc}
+        {this.props.src}
       </div>
       <div className="description">
         {this.props.desc}

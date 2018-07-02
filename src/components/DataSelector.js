@@ -11,7 +11,8 @@ class DataSelector extends Component{
       <div className="ui divider"></div>
       <h3>Doom Metrics</h3>
       <div className="ui cards">
-        {this.props.Datasets.map((item)=><DataSet name={item.name} desc={item.desc} id={item.id} key={item.id} className="card"/>)}
+        {/* IF datasets have loaded, render them, else display error */}
+        {this.props.Datasets ? this.props.Datasets.map((item)=><DataSet name={item.name} src={item.srcName} desc={item.desc} id={item.id} key={item.id} className="card"/>) : "Error: Cannot Access Database"}
       </div>
     </React.Fragment>
     )

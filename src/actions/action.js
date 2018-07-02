@@ -10,3 +10,7 @@ export function toggleLogin(){
 export function storeDatasets(dataJson){
   return {type: "STORE_DATASETS", payload:dataJson}
 }
+
+export function storeUserDatasets(dataJson){
+  return {type: "STORE_USER_DATASETS", payload:dataJson}
+}

@@ -2,6 +2,7 @@ const defaultState = {
   //User: {id:null, token:null},
   LoggedIn: false,
   Datasets: null,
+  UserDatasets: null,
 }
 
 function reducer(state = defaultState, action){
@@ -20,6 +21,9 @@ function reducer(state = defaultState, action){
     case "STORE_DATASETS":
       console.log('HI IM Storeing datasets');
       return {...state, Datasets:action.payload}
+    case "STORE_USER_DATASETS":
+      console.log('HI IM Storeing User datasets');
+      return {...state, UserDatasets:action.payload}
     default:
       return state
   }
