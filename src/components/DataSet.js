@@ -2,16 +2,16 @@ import React, { Component } from 'react';
 
 import {connect} from 'react-redux'
 import { Slider } from 'react-semantic-ui-range'
+import {UpdateUserDatasets} from '../actions/action'
 
 class DataSet extends Component{
 
 
   render(){
     // find curent users existing weight for this dataset
-    const dataRel = this.props.UserDatasets.find((set)=>set.dataset_id === this.props.id)
-    // set dataweight to correct weight if availbe else 0
-    const dataWeight = dataRel ? dataRel.weight : 0
-
+    let dataRel = this.props.UserDatasets.find((set)=>set.dataset_id === this.props.id)
+    // if previous line returned undefined set values
+    dataRel = dataRel ? dataRel : {user_id: localStorage.id, dataset_id: this.props.id, weight: 0}
     return(
       <div className="card">
         <div className="content">
@@ -27,15 +27,13 @@ class DataSet extends Component{
       <div className="ui range">
         <Slider color="grey" inverted={false}
                 settings={{
-                start: dataWeight,
+                start: dataRel.weight,
                 min:0,
                 max:10,
                 step:1,
-                // onChange: (value) => {
-                //   this.setState({
-                //     value1:value
-                //   })
-                // }
+                onChange: (value) => {
+                  this.props.UpdateUserDatasets(dataRel, value)
+                }
               }}/>
       </div>
     </div>
@@ -51,7 +49,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    //
+    UpdateUserDatasets: (userDataObj, currentValue) => dispatch(UpdateUserDatasets(userDataObj, currentValue))
   }
 }
 

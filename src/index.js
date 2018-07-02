@@ -8,6 +8,7 @@ import {createStore, compose} from 'redux';
 import reducer from './reducers/reducer';
 import {Provider} from 'react-redux';
 import {loadState, saveState} from './localStorage';
+// import thunk from 'redux-thunk'
 
 
 const persistedState = loadState();
