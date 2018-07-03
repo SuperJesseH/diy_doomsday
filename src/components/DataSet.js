@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import {connect} from 'react-redux'
-import { Slider, Button} from 'react-semantic-ui-range'
+import { Slider} from 'react-semantic-ui-range'
 import {UpdateUserDatasets} from '../actions/action'
 
 class DataSet extends Component{
@@ -24,11 +24,11 @@ class DataSet extends Component{
       <div className="description">
         {this.props.desc}
       </div>
-      <div class="ui buttons">
+      <div className="ui buttons">
         {/* BUILD OUT FORM HERE NOT YET FUNCTIONAL */}
-        <button class="ui negative button">More Doom</button>
-        <div class="or"></div>
-        <button class="ui positive button">Less Doom</button>
+        <button className="ui negative button">More Doom</button>
+        <div className="or"></div>
+        <button className="ui positive button">Less Doom</button>
       </div>
       <div className="ui range">
         <Slider color="grey" inverted={false}
