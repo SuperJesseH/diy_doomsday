@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import {connect} from 'react-redux'
-import { Slider } from 'react-semantic-ui-range'
+import { Slider, Button} from 'react-semantic-ui-range'
 import {UpdateUserDatasets} from '../actions/action'
 
 class DataSet extends Component{
@@ -24,14 +24,20 @@ class DataSet extends Component{
       <div className="description">
         {this.props.desc}
       </div>
+      <div class="ui buttons">
+        {/* BUILD OUT FORM HERE NOT YET FUNCTIONAL */}
+        <button class="ui negative button">More Doom</button>
+        <div class="or"></div>
+        <button class="ui positive button">Less Doom</button>
+      </div>
       <div className="ui range">
         <Slider color="grey" inverted={false}
                 settings={{
                 start: dataRel.weight,
                 min:0,
-                max:10,
+                max:5,
                 step:1,
-                onChange: (value) => {
+                onChange:(value) => {
                   this.props.UpdateUserDatasets(dataRel, value)
                 }
               }}/>
