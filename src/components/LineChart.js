@@ -6,26 +6,24 @@ import { Line } from "react-chartjs"
 
 class LineChart extends Component {
 
-  average = (array) => array.reduce((a, b) => a + b) / array.length;
-
   render(){
+
+    // MOVE THIS UP TO DataVizContainer
     let labels = []
     let data = []
-    let dataAvg = 0
     if (this.props.dataSet){
-      for (let item in this.props.dataSet){
-        if (parseFloat(this.props.dataSet[item])){
+      for (let item in this.props.dataSet.data){
+        if (parseFloat(this.props.dataSet.data[item])){
           labels.push(item)
-          data.push(parseFloat(this.props.dataSet[item]))
+          data.push(parseFloat(this.props.dataSet.data[item]))
         }
       }
-      dataAvg = this.average(data)
     }
 
     const chartData = {
-        labels: labels.slice(labels.length - 14),
+        labels: labels.slice(labels.length - 30),
         datasets: [{
-            data: data.slice(data.length - 14),
+            data: data.slice(data.length - 30),
 
         }]
     }

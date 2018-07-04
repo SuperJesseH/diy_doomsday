@@ -13,14 +13,47 @@ class DataVizContainer extends Component {
     super(props)
 
     this.state = {
+      sets:{}
     }
   }
 
+
+  calculateIndex (daysback = 1){
+    let index = 0
+    for (let data of Object.values(this.state.sets)){
+      const mostReccentValue = parseFloat(Object.values(data.data).slice(Object.values(data).length-daysback)[0])
+
+      const indexComponent = (mostReccentValue - data.mean) /data.stdDev
+      index += indexComponent
+    }
+
+    if (daysback === 1){
+      console.log("current index value", index * 100);
+      this.setState({...this.state,currentIndex:index, index7ago:this.calculateIndex(8)})
+    }
+    return index
+  }
+
+
+
+
   componentDidMount (){
-    fetch("http://localhost:3000/api/v1/data_requests/3").then(resp=>resp.json()).then(datasetNAME=>this.setState({...this.state,datasetNAME}))
+    if (this.props.UserDatasets){
+      for (let dataset of this.props.UserDatasets){
+
+        const dataName = this.props.Datasets.find((ele)=>(dataset.dataset_id === ele.id )).name
+
+        fetch("http://localhost:3000/api/v1/data_requests/"+String(dataset.dataset_id)).then(resp=>resp.json()).then(data=>this.setState({...this.state,sets:{...this.state.sets,[dataName]:data}})).then(()=>this.calculateIndex())
+      }
+    }
   }
 
   render(){
+    console.log(this.state);
+    let charts =[]
+    for (let data of Object.values(this.state.sets)){
+      charts.push(<LineChart dataSet={data}/>)
+    }
     return(
       <div>
       <h3>Your Doomsday Stats</h3>
@@ -30,15 +63,15 @@ class DataVizContainer extends Component {
         </div>
 
         <div className="value">
-          40,509
+            {Math.round((this.state.currentIndex+1)*1000)}
         </div>
         <div className="label">
-          %Δ since yesterday
+          %Δ since Last Week
         </div>
         <div className="value">
-          +1.32%
+          {Math.round((((this.state.currentIndex+1) - (this.state.index7ago+1))/Math.abs((this.state.index7ago+1)))*100)}%
         </div>
-        <LineChart dataSet={this.state.datasetNAME}/>
+        {charts}
         <PieChart />
       </div>
 
