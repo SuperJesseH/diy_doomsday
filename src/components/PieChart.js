@@ -8,17 +8,16 @@ class PieChart extends Component {
 
 
   render(){
+    console.log(this.props);
 
-    const chartData = [
-            {color: "blue", label: "test1", value: 1},
-            {color: "red", label: "test2", value: 2},
-            {color: "yellow", label: "test3", value: 3},
-            {color: "purple", label: "test5", value: 2},
-            {color: "green", label: "test4", value: 1},
-            {color: "pink", label: "test6", value: 1},
-
-        ]
-
+    let pieSlices = []
+    for (let set of this.props.UserDatasets){
+        pieSlices.push({
+          label:this.props.Datasets.find(
+            (ele)=>(set.dataset_id === ele.id)).name,
+          value:set.weight
+        })
+    }
 
     const chartOptions = {
       cutout: 50,
@@ -26,7 +25,7 @@ class PieChart extends Component {
     }
 
     return(
-      <Pie className="card" data={chartData}  options={chartOptions}/>
+      <Pie className="card" data={pieSlices}  options={chartOptions}/>
     )
   }
 }

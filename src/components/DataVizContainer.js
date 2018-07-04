@@ -28,7 +28,6 @@ class DataVizContainer extends Component {
     }
 
     if (daysback === 1){
-      console.log("current index value", index * 100);
       this.setState({...this.state,currentIndex:index, index7ago:this.calculateIndex(8)})
     }
     return index
@@ -49,7 +48,6 @@ class DataVizContainer extends Component {
   }
 
   render(){
-    console.log(this.state);
     let charts =[]
     for (let data of Object.values(this.state.sets)){
       charts.push(<LineChart dataSet={data}/>)
