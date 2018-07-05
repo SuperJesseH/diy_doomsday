@@ -8,7 +8,6 @@ class PieChart extends Component {
 
 
   render(){
-    console.log(this.props);
 
     let pieSlices = []
     if (this.props.UserDatasets && this.props.Datasets){

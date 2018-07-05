@@ -12,11 +12,9 @@ class LineChart extends Component {
     let labels = []
     let data = []
     if (this.props.dataSet){
-      for (let item in this.props.dataSet.data){
-        if (parseFloat(this.props.dataSet.data[item])){
-          labels.push(item)
-          data.push(parseFloat(this.props.dataSet.data[item]))
-        }
+      for (let item of this.props.dataSet){
+          labels.push(Object.keys(item)[0])
+          data.push(Object.values(item)[0])
       }
     }
 
