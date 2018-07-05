@@ -37,7 +37,7 @@ class DataVizContainer extends Component {
 
 
   componentDidMount (){
-    if (this.props.UserDatasets){
+    if (this.props.UserDatasets && this.props.Datasets){
       for (let dataset of this.props.UserDatasets){
 
         const dataName = this.props.Datasets.find((ele)=>(dataset.dataset_id === ele.id )).name

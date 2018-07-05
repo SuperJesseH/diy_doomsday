@@ -11,12 +11,14 @@ class PieChart extends Component {
     console.log(this.props);
 
     let pieSlices = []
-    for (let set of this.props.UserDatasets){
-        pieSlices.push({
-          label:this.props.Datasets.find(
-            (ele)=>(set.dataset_id === ele.id)).name,
-          value:set.weight
-        })
+    if (this.props.UserDatasets && this.props.Datasets){
+      for (let set of this.props.UserDatasets){
+          pieSlices.push({
+            label:this.props.Datasets.find(
+              (ele)=>(set.dataset_id === ele.id)).name,
+            value:set.weight
+          })
+      }
     }
 
     const chartOptions = {
@@ -25,7 +27,7 @@ class PieChart extends Component {
     }
 
     return(
-      <Pie className="card" data={pieSlices}  options={chartOptions}/>
+      <Pie className="card" data={pieSlices} options={chartOptions}/>
     )
   }
 }
