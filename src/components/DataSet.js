@@ -6,12 +6,37 @@ import {UpdateUserDatasets} from '../actions/action'
 
 class DataSet extends Component{
 
+  constructor(props){
+    super(props)
 
-  render(){
+    this.state={
+
+    }
+  }
+
+  componentDidMount(){
     // find curent users existing weight for this dataset
     let dataRel = this.props.UserDatasets.find((set)=>set.dataset_id === this.props.id)
     // if previous line returned undefined set values
-    dataRel = dataRel ? dataRel : {user_id: localStorage.id, dataset_id: this.props.id, weight: 0}
+    dataRel = dataRel ? dataRel : {user_id: localStorage.id, positive_corral: true,  dataset_id: this.props.id, weight: 0}
+
+    this.setState({...this.state,dataRel})
+  }
+
+  handleDoomCorralClick (e){
+    e.preventDefault()
+    debugger
+  }
+
+  handleNotDoomCorralClick (e){
+    e.preventDefault()
+    debugger
+  }
+
+
+
+  render(){
+    console.log(this.state);
     return(
       <div className="card">
         <div className="content">
@@ -24,24 +49,34 @@ class DataSet extends Component{
       <div className="description">
         {this.props.desc}
       </div>
-      <div className="ui buttons">
-        {/* BUILD OUT FORM HERE NOT YET FUNCTIONAL */}
-        <button className="ui negative button">More Doom</button>
-        <div className="or"></div>
-        <button className="ui positive button">Less Doom</button>
-      </div>
-      <div className="ui range">
-        <Slider color="grey" inverted={false}
-                settings={{
-                start: dataRel.weight,
-                min:0,
-                max:5,
-                step:1,
-                onChange:(value) => {
-                  this.props.UpdateUserDatasets(dataRel, value)
-                }
-              }}/>
-      </div>
+      <div className="ui segment">
+        {/*  If we have data prefrences show them */}
+        {!this.state.dataRel ? null :
+        <form className="ui form">
+                      This Metric is...
+            <div className="ui buttons">
+              <button onClick={this.handleDoomCorralClick} className={this.state.dataRel.positive_corral ? "ui negative  button" : "ui button"}>Pro Doom</button>
+              <div className="or"></div>
+              <button onClick={this.handleNotDoomCorralClick} className={!this.state.dataRel.positive_corral ? "ui positive  button" : "ui button"}>Anti Doom</button>
+            </div>
+            This Metric is this important...
+        <div className="ui range">
+          <Slider color="grey" inverted={false}
+                  settings={{
+                  start: this.state.dataRel.weight,
+                  min:0,
+                  max:5,
+                  step:1,
+                  onChange:(value) => {
+                    this.props.UpdateUserDatasets(this.state.dataRel, value)
+                  }
+                }}/>
+        </div>
+        <div className="ui buttons">
+          <button onClick={this.handleSubmitClick} className="ui blue inverted active button">Confirm Changes</button>
+        </div>
+      </form>}
+  </div>
     </div>
   </div>
     )

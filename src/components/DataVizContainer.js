@@ -48,8 +48,8 @@ class DataVizContainer extends Component {
         <div className="value">
           {Math.round(((todaysDoom - weekAgoDoom)/ Math.abs(weekAgoDoom))*100)}%
         </div>
-        <LineChart dataSet={this.state.doomIndex}/>
         <PieChart />
+        <LineChart dataSet={this.state.doomIndex}/>
       </div>
 
     )
