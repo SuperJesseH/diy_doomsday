@@ -15,8 +15,7 @@ export function storeUserDatasets(dataJson){
   return {type: "STORE_USER_DATASETS", payload:dataJson}
 }
 
-export function UpdateUserDatasets(userDataObj, currentValue){
-  userDataObj.weight = currentValue
+export function UpdateUserDatasets(userDataObj){
     fetch("http://localhost:3000/api/v1/user_datasets/", {
       method: 'POST',
       body: JSON.stringify(userDataObj),

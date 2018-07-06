@@ -82,13 +82,12 @@ handleDoomCorralClick = (e) => {
                   max:5,
                   step:1,
                   onChange:(value) => {
-                    // this.props.UpdateUserDatasets(this.state.dataRel, value)
                     this.handleSliderValue(value)
                   }
                 }}/>
         </div>
         <div className="ui buttons">
-          <button onClick={this.handleSubmitClick} className={this.state.changes ? "ui blue inverted active button" : "ui active button"}>Confirm Changes</button>
+          <button onClick={()=>this.props.UpdateUserDatasets(this.state.dataRel)} className={this.state.changes ? "ui blue inverted active button" : "ui active button"}>Confirm Changes</button>
         </div>
       </form>}
   </div>
@@ -105,7 +104,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    UpdateUserDatasets: (userDataObj, currentValue) => dispatch(UpdateUserDatasets(userDataObj, currentValue))
+    UpdateUserDatasets: (userDataObj) => dispatch(UpdateUserDatasets(userDataObj))
   }
 }
 
