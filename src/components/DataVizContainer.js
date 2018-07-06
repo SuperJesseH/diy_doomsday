@@ -3,10 +3,6 @@ import {connect} from 'react-redux'
 import LineChart from './LineChart'
 import PieChart from './PieChart'
 
-// var LineChart = require("react-chartjs").Line;
-
-import { Line, Pie } from "react-chartjs"
-
 class DataVizContainer extends Component {
 
   constructor(props){
@@ -26,7 +22,6 @@ class DataVizContainer extends Component {
   }
 
   render(){
-    console.log(this.state);
     const todaysDoom = this.state.doomIndex ? Math.round(Object.values(this.state.doomIndex[0])*1000) : null
 
     const weekAgoDoom = this.state.doomIndex ? Math.round(Object.values(this.state.doomIndex[7])*1000) : null

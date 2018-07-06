@@ -19,7 +19,6 @@ class DataSet extends Component{
     let dataRel = this.props.UserDatasets.find((set)=>set.dataset_id === this.props.id)
     // if previous line returned undefined set values
     dataRel = dataRel ? dataRel : {user_id: localStorage.id, positive_corral: true,  dataset_id: this.props.id, weight: 0}
-    console.log("inside component did mount");
     this.setState({...this.state, dataRel})
   }
 
@@ -46,11 +45,16 @@ handleDoomCorralClick = (e) => {
     })
   }
 
+  handleSubmit = (e) =>{
+    e.preventDefault()
+    this.props.UpdateUserDatasets(this.state.dataRel)
+    this.setState({...this.state,
+      dataRel: {...this.state.dataRel}, changes: false
+    })
+  }
 
 
   render(){
-    console.log("a datasetCard state", this.state);
-    console.log("a datasetCard props", this.props);
     return(
       <div className="card">
         <div className="content">
@@ -87,7 +91,7 @@ handleDoomCorralClick = (e) => {
                 }}/>
         </div>
         <div className="ui buttons">
-          <button onClick={()=>this.props.UpdateUserDatasets(this.state.dataRel)} className={this.state.changes ? "ui blue inverted active button" : "ui active button"}>Confirm Changes</button>
+          <button onClick={this.handleSubmit} className={this.state.changes ? "ui blue inverted active button" : "ui active button"}>Confirm Changes</button>
         </div>
       </form>}
   </div>
