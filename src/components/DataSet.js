@@ -19,24 +19,38 @@ class DataSet extends Component{
     let dataRel = this.props.UserDatasets.find((set)=>set.dataset_id === this.props.id)
     // if previous line returned undefined set values
     dataRel = dataRel ? dataRel : {user_id: localStorage.id, positive_corral: true,  dataset_id: this.props.id, weight: 0}
-
-    this.setState({...this.state,dataRel})
+    console.log("inside component did mount");
+    this.setState({...this.state, dataRel})
   }
 
-  handleDoomCorralClick (e){
+handleDoomCorralClick = (e) => {
     e.preventDefault()
-    debugger
+    this.setState({...this.state,
+      dataRel: {...this.state.dataRel,
+        positive_corral: true}, changes: true
+    })
   }
 
-  handleNotDoomCorralClick (e){
+  handleNotDoomCorralClick = (e) => {
     e.preventDefault()
-    debugger
+    this.setState({...this.state,
+      dataRel: {...this.state.dataRel,
+        positive_corral: false}, changes: true
+    })
+  }
+
+  handleSliderValue = (v) => {
+    this.setState({...this.state,
+      dataRel: {...this.state.dataRel,
+        weight: v}, changes: true
+    })
   }
 
 
 
   render(){
-    console.log(this.state);
+    console.log("a datasetCard state", this.state);
+    console.log("a datasetCard props", this.props);
     return(
       <div className="card">
         <div className="content">
@@ -68,12 +82,13 @@ class DataSet extends Component{
                   max:5,
                   step:1,
                   onChange:(value) => {
-                    this.props.UpdateUserDatasets(this.state.dataRel, value)
+                    // this.props.UpdateUserDatasets(this.state.dataRel, value)
+                    this.handleSliderValue(value)
                   }
                 }}/>
         </div>
         <div className="ui buttons">
-          <button onClick={this.handleSubmitClick} className="ui blue inverted active button">Confirm Changes</button>
+          <button onClick={this.handleSubmitClick} className={this.state.changes ? "ui blue inverted active button" : "ui active button"}>Confirm Changes</button>
         </div>
       </form>}
   </div>
