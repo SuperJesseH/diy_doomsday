@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {connect} from 'react-redux'
 import { Button, Form, Grid, Header, Image, /*Message,*/ Segment } from 'semantic-ui-react'
 import {updateEmail} from '../actions/action'
+import {toggleLogin} from '../actions/action'
 
 class RegisterForm extends Component {
 
@@ -32,6 +33,7 @@ class RegisterForm extends Component {
 
     //checks if the basic requirements are met (name, email, password)
     if (userData.password && userData.name && userData.email && userData["confirm password"] === userData.password){
+
       // send a post to backend to create a new user, recive a token, and unmount registration screen
       console.log("OK IM AUTHING YOU SWEETIE!!", userData);
 
@@ -49,7 +51,7 @@ class RegisterForm extends Component {
       // THIS PROPS SIGNUPCHANGE REFACTOR FOR REDUX !!!!
       //
       // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-      .then(this.props.signupChange).catch(()=>this.setState({errors:true}))
+      .then(this.props.signupChange).then(this.props.toggleLogin).catch(()=>this.setState({errors:true}))
     }else{
       // if data is invalid sets state to pop up an error message
       this.setState({errors:true})
@@ -130,7 +132,8 @@ const mapStateToProps = (state) => {
 
 function mapDispatchToProps(dispatch) {
   return {
-    updateUserEmail: (email) => dispatch(updateEmail(email))
+    updateUserEmail: (email) => dispatch(updateEmail(email)),
+    toggleLogin: () => dispatch(toggleLogin())
     }
 }
 

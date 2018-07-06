@@ -105,7 +105,7 @@ handelLogin = event => {
 }
 
 const mapStateToProps = (state) => {
-  return state.User
+  return state
 }
 
 function mapDispatchToProps(dispatch) {
