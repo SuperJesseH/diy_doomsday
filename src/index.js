@@ -4,18 +4,18 @@ import './index.css';
 import App from './App';
 //import registerServiceWorker from './registerServiceWorker';
 import './semantic/dist/semantic.min.css';
-import {createStore, compose} from 'redux';
+import {createStore, compose, applyMiddleware} from 'redux';
 import reducer from './reducers/reducer';
 import {Provider} from 'react-redux';
 import {loadState, saveState} from './localStorage';
-// import thunk from 'redux-thunk'
+import thunk from 'redux-thunk'
 
 
 const persistedState = loadState();
 const store = createStore(reducer, /*persistedState,*/
 compose(
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-))
+), applyMiddleware(thunk))
 
 store.subscribe(()=> {
   saveState(

@@ -26,7 +26,10 @@ export function UpdateUserDatasets(userDataObj){
     return {type: "UPDATE_USER_DATASETS", payload:userDataObj}
 }
 
-export function setDoomIndexValues(doomIndexData){
-  console.log("action", doomIndexData );
-  return {type:"SET_DOOM_VALUES", payload:doomIndexData}
+export function setDoomIndexValues(){
+  return dispatch => {
+    return fetch(`http://localhost:3000/api/v1/data_requests/${localStorage.id}`)
+    .then(resp=>resp.json())
+    .then(json=>dispatch({type:"SET_DOOM_VALUES", payload: json}))
+  }
 }

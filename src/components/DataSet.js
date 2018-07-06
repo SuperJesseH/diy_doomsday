@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import {connect} from 'react-redux'
 import { Slider} from 'react-semantic-ui-range'
 import {UpdateUserDatasets} from '../actions/action'
+import {setDoomIndexValues} from '../actions/action'
 
 class DataSet extends Component{
 
@@ -54,6 +55,8 @@ handleDoomCorralClick = (e) => {
     this.setState({...this.state,
       dataRel: {...this.state.dataRel}, changes: false
     })
+
+    this.props.setDoomIndexValues()
   }
 
 
@@ -111,7 +114,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    UpdateUserDatasets: (userDataObj) => dispatch(UpdateUserDatasets(userDataObj))
+    UpdateUserDatasets: (userDataObj) => dispatch(UpdateUserDatasets(userDataObj)),
+    setDoomIndexValues: () => dispatch(setDoomIndexValues())
   }
 }
 

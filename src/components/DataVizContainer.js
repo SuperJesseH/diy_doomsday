@@ -7,10 +7,7 @@ import {setDoomIndexValues} from '../actions/action'
 class DataVizContainer extends Component {
 
   componentDidMount (){
-
-    fetch(`http://localhost:3000/api/v1/data_requests/${localStorage.id}`)
-    .then(resp=>resp.json())
-    .then(resp=>this.props.setDoomIndexValues(resp))
+    this.props.setDoomIndexValues()
   }
 
   render(){
@@ -52,7 +49,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    setDoomIndexValues: (indexValues) => dispatch(setDoomIndexValues(indexValues))
+    setDoomIndexValues: () => dispatch(setDoomIndexValues())
   }
 }
 
