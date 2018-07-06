@@ -2,29 +2,22 @@ import React, { Component } from 'react';
 import {connect} from 'react-redux'
 import LineChart from './LineChart'
 import PieChart from './PieChart'
+import {setDoomIndexValues} from '../actions/action'
 
 class DataVizContainer extends Component {
-
-  constructor(props){
-    super(props)
-
-    this.state = {
-    }
-  }
 
   componentDidMount (){
 
     fetch(`http://localhost:3000/api/v1/data_requests/${localStorage.id}`)
     .then(resp=>resp.json())
-    .then(doomIndex=>this.setState({...this.state,doomIndex}))
-
-
+    .then(resp=>this.props.setDoomIndexValues(resp))
   }
 
   render(){
-    const todaysDoom = this.state.doomIndex ? Math.round(Object.values(this.state.doomIndex[0])*1000) : null
+    console.log(this.props);
+    const todaysDoom = this.props.doomIndexData ? Math.round(Object.values(this.props.doomIndexData[0])*1000) : null
 
-    const weekAgoDoom = this.state.doomIndex ? Math.round(Object.values(this.state.doomIndex[7])*1000) : null
+    const weekAgoDoom = this.props.doomIndexData ? Math.round(Object.values(this.props.doomIndexData[7])*1000) : null
 
     return(
       <div>
@@ -44,7 +37,7 @@ class DataVizContainer extends Component {
           {Math.round(((todaysDoom - weekAgoDoom)/ Math.abs(weekAgoDoom))*100)}%
         </div>
         <PieChart />
-        <LineChart dataSet={this.state.doomIndex}/>
+        <LineChart />
       </div>
 
     )
@@ -59,7 +52,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    //
+    setDoomIndexValues: (indexValues) => dispatch(setDoomIndexValues(indexValues))
   }
 }
 

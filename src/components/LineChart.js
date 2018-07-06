@@ -11,8 +11,8 @@ class LineChart extends Component {
     // MOVE THIS UP TO DataVizContainer
     let labels = []
     let data = []
-    if (this.props.dataSet){
-      for (let item of this.props.dataSet){
+    if (this.props.doomIndexData){
+      for (let item of this.props.doomIndexData){
           labels.push(Object.keys(item)[0])
           data.push(Object.values(item)[0])
       }

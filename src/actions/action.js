@@ -25,3 +25,8 @@ export function UpdateUserDatasets(userDataObj){
     })
     return {type: "UPDATE_USER_DATASETS", payload:userDataObj}
 }
+
+export function setDoomIndexValues(doomIndexData){
+  console.log("action", doomIndexData );
+  return {type:"SET_DOOM_VALUES", payload:doomIndexData}
+}

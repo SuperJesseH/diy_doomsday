@@ -9,6 +9,21 @@ import {storeUserDatasets} from '../actions/action'
 
 class ProfileContainer extends Component {
 
+  constructor(props){
+    super(props)
+
+    this.state={
+      userDatVals:false
+    }
+  }
+
+
+checkVals = (data) => {
+  if (data.payload.length){
+    this.setState({userDatVals:true})
+    console.log("statChange");
+  }
+}
 
  componentDidMount(){
 
@@ -20,13 +35,16 @@ class ProfileContainer extends Component {
    fetch(`http://localhost:3000/api/v1/user_datasets/${localStorage.id}`)
    .then(resp => resp.json())
    .then(json=>this.props.storeUserDatasets(json))
+   .then(data=>this.checkVals(data))
  }
 
 
+
+
   render() {
-    console.log(this.props);
+    console.log(this.props.UserDatasets);
     return (
-      <div className="App">
+    <div className="App">
         <NavBar />
         <DataVizContainer />
         <DataSelector />

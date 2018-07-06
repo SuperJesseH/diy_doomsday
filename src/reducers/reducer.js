@@ -3,9 +3,11 @@ const defaultState = {
   LoggedIn: false,
   Datasets: null,
   UserDatasets: [],
+  doomIndexData: []
 }
 
 function reducer(state = defaultState, action){
+  console.log(action.type);
   switch (action.type) {
     // case "UPDATE_EMAIL":
     //   let newUserEmail = {...state,
@@ -27,6 +29,10 @@ function reducer(state = defaultState, action){
     // this works because on state reset the dataset is re-fetched
     case "UPDATE_USER_DATASETS":
       return state
+
+    case "SET_DOOM_VALUES":
+      console.log("payload",action.payload)
+      return {...state, doomIndexData:action.payload}
 
     default:
       return state

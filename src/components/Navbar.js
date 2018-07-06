@@ -8,6 +8,7 @@ class NavBar extends Component {
 
 
   render(){
+
     return(
       <div className="ui menu">
           <img alt="DIY Doom Index" src={logo} style={{width: 294, height:100, borderRadius:4}}></img>
