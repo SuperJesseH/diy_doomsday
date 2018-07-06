@@ -2,8 +2,8 @@ const defaultState = {
   //User: {id:null, token:null},
   LoggedIn: false,
   Datasets: null,
-  UserDatasets: [],
-  doomIndexData: []
+  UserDatasets: null,
+  doomIndexData: null
 }
 
 function reducer(state = defaultState, action){

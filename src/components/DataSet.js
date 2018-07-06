@@ -16,7 +16,10 @@ class DataSet extends Component{
 
   componentDidMount(){
     // find curent users existing weight for this dataset
-    let dataRel = this.props.UserDatasets.find((set)=>set.dataset_id === this.props.id)
+    let dataRel = null
+    if (this.props.UserDatasets){
+      dataRel = this.props.UserDatasets.find((set)=>set.dataset_id === this.props.id)
+    }
     // if previous line returned undefined set values
     dataRel = dataRel ? dataRel : {user_id: localStorage.id, positive_corral: true,  dataset_id: this.props.id, weight: 0}
     this.setState({...this.state, dataRel})
