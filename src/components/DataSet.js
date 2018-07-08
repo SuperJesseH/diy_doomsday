@@ -4,6 +4,7 @@ import {connect} from 'react-redux'
 import { Slider} from 'react-semantic-ui-range'
 import {UpdateUserDatasets} from '../actions/action'
 import {setDoomIndexValues} from '../actions/action'
+import {getUserDatasets} from '../actions/action'
 
 class DataSet extends Component{
 
@@ -57,6 +58,7 @@ handleDoomCorralClick = (e) => {
     })
 
     this.props.setDoomIndexValues()
+    this.props.getUserDatasets()
   }
 
 
@@ -115,7 +117,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     UpdateUserDatasets: (userDataObj) => dispatch(UpdateUserDatasets(userDataObj)),
-    setDoomIndexValues: () => dispatch(setDoomIndexValues())
+    setDoomIndexValues: () => dispatch(setDoomIndexValues()),
+    getUserDatasets: () => dispatch(getUserDatasets())
   }
 }
 

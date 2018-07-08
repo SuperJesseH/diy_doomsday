@@ -5,6 +5,7 @@ import DataVizContainer from './DataVizContainer';
 import DataSelector from './DataSelector';
 import {storeDatasets} from '../actions/action'
 import {storeUserDatasets} from '../actions/action'
+import {getUserDatasets} from '../actions/action'
 
 
 class ProfileContainer extends Component {
@@ -17,16 +18,13 @@ class ProfileContainer extends Component {
    .then(resp => resp.json())
    .then(json=>this.props.storeDatasets(json))
 
-   fetch(`http://localhost:3000/api/v1/user_datasets/${localStorage.id}`)
-   .then(resp => resp.json())
-   .then(json=>this.props.storeUserDatasets(json))
+   this.props.getUserDatasets()
  }
 
 
 
 
   render() {
-    console.log(this.props.UserDatasets);
     return (
     <div className="App">
         <NavBar />
@@ -44,7 +42,8 @@ const mapStateToProps = (state) => {
 function mapDispatchToProps(dispatch) {
   return {
     storeDatasets: (dataJson) => dispatch(storeDatasets(dataJson)),
-    storeUserDatasets: (dataJson) => dispatch(storeUserDatasets(dataJson))
+    storeUserDatasets: (dataJson) => dispatch(storeUserDatasets(dataJson)),
+    getUserDatasets: () => dispatch(getUserDatasets())
     }
 }
 

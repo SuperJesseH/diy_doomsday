@@ -31,8 +31,11 @@ function reducer(state = defaultState, action){
       return state
 
     case "SET_DOOM_VALUES":
-      console.log("payload",action.payload)
       return {...state, doomIndexData:action.payload}
+      
+    case "GET_USER_DATASETS":
+    console.log("maurie")
+      return {...state, UserDatasets:action.payload}
 
     default:
       return state

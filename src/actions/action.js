@@ -33,3 +33,12 @@ export function setDoomIndexValues(){
     .then(json=>dispatch({type:"SET_DOOM_VALUES", payload: json}))
   }
 }
+
+
+export function getUserDatasets(){
+  return dispatch => {
+    return fetch(`http://localhost:3000/api/v1/user_datasets/${localStorage.id}`)
+    .then(resp => resp.json())
+    .then(json=>dispatch({type:"GET_USER_DATASETS", payload: json}))
+  }
+}
