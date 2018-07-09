@@ -12,7 +12,6 @@ class DataVizContainer extends Component {
   }
 
   render(){
-    console.log(this.props);
     const todaysDoom = this.props.doomIndexData ? Math.round(Object.values(this.props.doomIndexData[0])*1000) : null
 
     const weekAgoDoom = this.props.doomIndexData ? Math.round(Object.values(this.props.doomIndexData[7])*1000) : null

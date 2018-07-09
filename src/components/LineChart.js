@@ -15,14 +15,14 @@ class LineChart extends Component {
     if (this.props.doomIndexData){
       for (let item of this.props.doomIndexData){
           labels.unshift(Object.keys(item)[0])
-          data.unshift(Object.values(item)[0])
+          data.unshift(Math.round(Object.values(item)[0]*1000))
       }
     }
 
     const chartData = {
-        labels: labels.slice(labels.length - 30),
+        labels: labels,
         datasets: [{
-            data: data.slice(data.length - 30),
+            data: data,
 
         }]
     }
