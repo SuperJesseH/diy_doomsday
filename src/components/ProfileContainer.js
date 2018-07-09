@@ -6,11 +6,12 @@ import DataSelector from './DataSelector';
 import {storeDatasets} from '../actions/action'
 import {storeUserDatasets} from '../actions/action'
 import {getUserDatasets} from '../actions/action'
+import {setDoomIndexValues} from '../actions/action'
 
 
 class ProfileContainer extends Component {
 
-  // contains user home page 
+  // contains user home page
 
  componentDidMount(){
 
@@ -20,6 +21,7 @@ class ProfileContainer extends Component {
    .then(json=>this.props.storeDatasets(json))
 
    this.props.getUserDatasets()
+   this.props.setDoomIndexValues()
  }
 
 
@@ -42,7 +44,8 @@ function mapDispatchToProps(dispatch) {
   return {
     storeDatasets: (dataJson) => dispatch(storeDatasets(dataJson)),
     storeUserDatasets: (dataJson) => dispatch(storeUserDatasets(dataJson)),
-    getUserDatasets: () => dispatch(getUserDatasets())
+    getUserDatasets: () => dispatch(getUserDatasets()),
+    setDoomIndexValues: () => dispatch(setDoomIndexValues())
     }
 }
 

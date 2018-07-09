@@ -1,13 +1,20 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux'
 import { Line } from "react-chartjs"
+import {setDoomIndexValues} from '../actions/action'
+
 
 class LineChart extends Component {
 
   // graphs a line chart of previous 30 days of doom index values
 
-  render(){
+  componentWillReceiveProps(nextProps) {
+    if (this.props.updated !== nextProps.updated) {
+      this.props.setDoomIndexValues();
+    }
+  }
 
+  render(){
     let labels = []
     let data = []
 
@@ -50,11 +57,10 @@ const mapStateToProps = (state) => {
   return state
 }
 
-const mapDispatchToProps = (dispatch) =>{
+const mapDispatchToProps = (dispatch) => {
   return {
-    //
+    setDoomIndexValues: () => dispatch(setDoomIndexValues())
   }
-
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(LineChart)

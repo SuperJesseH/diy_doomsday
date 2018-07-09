@@ -1,12 +1,18 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux'
 import { Pie } from "react-chartjs"
+import {getUserDatasets} from '../actions/action'
 
 class PieChart extends Component {
-  // vizualizes index weights in a pie chart 
+  // vizualizes index weights in a pie chart
+
+  componentWillReceiveProps(nextProps) {
+    if (this.props.updated !== nextProps.updated) {
+      this.props.getUserDatasets()
+    }
+  }
 
   render(){
-
     let pieSlices = []
     if (this.props.UserDatasets && this.props.Datasets){
       for (let set of this.props.UserDatasets){
@@ -36,7 +42,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) =>{
   return {
-    //
+    getUserDatasets: () => dispatch(getUserDatasets())
   }
 
 }

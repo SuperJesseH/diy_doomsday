@@ -17,6 +17,7 @@ export function storeUserDatasets(dataJson){
 }
 
 export function UpdateUserDatasets(userDataObj){
+  return dispatch => {
     fetch("http://localhost:3000/api/v1/user_datasets/", {
       method: 'POST',
       body: JSON.stringify(userDataObj),
@@ -24,24 +25,34 @@ export function UpdateUserDatasets(userDataObj){
         'Content-Type': 'application/json'
       }
     })
-    return {type: "UPDATE_USER_DATASETS", payload:userDataObj}
+    .then(resp => resp.json())
+    .then(json => {
+      dispatch({type: "UPDATE_USER_DATASETS", payload:userDataObj})
+    })
+  }
 }
 
-// Async redux actions  
+// Async redux actions
 
 export function setDoomIndexValues(){
-  return dispatch => {
-    return fetch(`http://localhost:3000/api/v1/data_requests/${localStorage.id}`)
+  return dispatch => { fetch(`http://localhost:3000/api/v1/data_requests/${localStorage.id}`)
     .then(resp=>resp.json())
-    .then(json=>dispatch({type:"SET_DOOM_VALUES", payload: json}))
+    .then(json=>{
+      dispatch({type:"SET_DOOM_VALUES", payload: json})
+  })
   }
 }
 
 
 export function getUserDatasets(){
-  return dispatch => {
-    return fetch(`http://localhost:3000/api/v1/user_datasets/${localStorage.id}`)
-    .then(resp => resp.json())
-    .then(json=>dispatch({type:"GET_USER_DATASETS", payload: json}))
+  return dispatch => {  fetch(`http://localhost:3000/api/v1/user_datasets/${localStorage.id}`)
+    .then(resp => {
+      console.log("resp is", resp);
+      return resp.json()
+    })
+    .then(json => {
+      dispatch({type:"GET_USER_DATASETS", payload: json})
+    }
+  )
   }
 }

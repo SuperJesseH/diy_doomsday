@@ -3,7 +3,8 @@ const defaultState = {
   LoggedIn: false,
   Datasets: null,
   UserDatasets: null,
-  doomIndexData: null
+  doomIndexData: null,
+  updated: false
 }
 
 function reducer(state = defaultState, action){
@@ -20,7 +21,7 @@ function reducer(state = defaultState, action){
 
     // this works because on state reset the dataset is re-fetched
     case "UPDATE_USER_DATASETS":
-      return state
+      return {...state, updated: !state.updated}
 
     case "SET_DOOM_VALUES":
       return {...state, doomIndexData:action.payload}

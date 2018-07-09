@@ -55,17 +55,20 @@ handleDoomCorralClick = (e) => {
 
   handleSubmit = (e) =>{
     // sends updated data set weights and correlations to backend and makes
-    // requests for updated index values - see redux actions 
+    // requests for updated index values - see redux actions
     e.preventDefault()
-     this.props.UpdateUserDatasets(this.state.dataRel)
+    console.log("inside handle submit");
+     // this.props.UpdateUserDatasets(this.state.dataRel)
+     // .then(this.props.getUserDatasets())
+     // .then(this.props.setDoomIndexValues())
 
      this.setState({...this.state,
       dataRel: {...this.state.dataRel}, changes: false
-    })
-     this.props.getUserDatasets()
-     this.props.setDoomIndexValues()
-
-  }
+    }, () => {
+        this.props.UpdateUserDatasets(this.state.dataRel)
+        this.props.getUserDatasets()
+      })
+}
 
 
   render(){

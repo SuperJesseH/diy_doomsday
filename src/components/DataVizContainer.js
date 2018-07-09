@@ -8,6 +8,7 @@ class DataVizContainer extends Component {
   // requests doom index values, displays current index values and contains charts/data viz
 
   componentDidMount (){
+
     this.props.setDoomIndexValues()
   }
 
@@ -15,7 +16,7 @@ class DataVizContainer extends Component {
     const todaysDoom = this.props.doomIndexData ? Math.round(Object.values(this.props.doomIndexData[0])*1000) : null
 
     const weekAgoDoom = this.props.doomIndexData ? Math.round(Object.values(this.props.doomIndexData[7])*1000) : null
-
+    console.log("inside data viz container");
     return(
       <div>
       <h3>Your Doomsday Stats</h3>
