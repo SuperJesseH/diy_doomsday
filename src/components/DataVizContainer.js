@@ -5,6 +5,7 @@ import PieChart from './PieChart'
 import {setDoomIndexValues} from '../actions/action'
 
 class DataVizContainer extends Component {
+  // requests doom index values, displays current index values and contains charts/data viz
 
   componentDidMount (){
     this.props.setDoomIndexValues()

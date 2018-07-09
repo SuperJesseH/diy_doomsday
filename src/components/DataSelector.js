@@ -2,8 +2,10 @@ import React, { Component } from 'react';
 import {connect} from 'react-redux'
 import DataSet from './DataSet'
 
-class DataSelector extends Component{
 
+// contains dataset cards that allow users to modify weights for doom index
+
+class DataSelector extends Component{
 
 
   render(){

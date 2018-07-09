@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
-
 import {connect} from 'react-redux'
-
 import logo from '../logo2.png'
 
 class NavBar extends Component {
+  // renders a very basic nav bar 
 
 
   render(){

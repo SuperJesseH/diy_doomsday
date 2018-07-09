@@ -10,6 +10,7 @@ import {getUserDatasets} from '../actions/action'
 
 class ProfileContainer extends Component {
 
+  // contains user home page 
 
  componentDidMount(){
 
@@ -20,8 +21,6 @@ class ProfileContainer extends Component {
 
    this.props.getUserDatasets()
  }
-
-
 
 
   render() {

@@ -28,6 +28,7 @@ class DataSet extends Component{
   }
 
 handleDoomCorralClick = (e) => {
+  // sets pos correlation changes in local state while waiting for submit click
     e.preventDefault()
     this.setState({...this.state,
       dataRel: {...this.state.dataRel,
@@ -36,6 +37,7 @@ handleDoomCorralClick = (e) => {
   }
 
   handleNotDoomCorralClick = (e) => {
+    // sets neg correlation changes in local state while waiting for submit click
     e.preventDefault()
     this.setState({...this.state,
       dataRel: {...this.state.dataRel,
@@ -44,6 +46,7 @@ handleDoomCorralClick = (e) => {
   }
 
   handleSliderValue = (v) => {
+    // sets weight value changes in local state while waiting for submit click
     this.setState({...this.state,
       dataRel: {...this.state.dataRel,
         weight: v}, changes: true
@@ -51,14 +54,17 @@ handleDoomCorralClick = (e) => {
   }
 
   handleSubmit = (e) =>{
+    // sends updated data set weights and correlations to backend and makes
+    // requests for updated index values - see redux actions 
     e.preventDefault()
-    this.props.UpdateUserDatasets(this.state.dataRel)
-    this.setState({...this.state,
+     this.props.UpdateUserDatasets(this.state.dataRel)
+
+     this.setState({...this.state,
       dataRel: {...this.state.dataRel}, changes: false
     })
+     this.props.getUserDatasets()
+     this.props.setDoomIndexValues()
 
-    this.props.setDoomIndexValues()
-    this.props.getUserDatasets()
   }
 
 

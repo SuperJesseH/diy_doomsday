@@ -16,13 +16,6 @@ class LoginForm extends Component {
 
 // Login form from semantic
 
-handleEmailChange = event => {
-  // let input = event.target.value
-  // this.props.updateUserEmail(input)
-}
-
-
-
 handelLogin = event => {
   // grabs all form data out of the event and packages it in an object
   let userData = {}
@@ -44,9 +37,6 @@ handelLogin = event => {
           localStorage.setItem('token', json.token)
           localStorage.setItem('id', json.id);
         })
-        // THIS PROPS SIGNUPCHANGE REFACTOR FOR REDUX !!!!
-        //
-        // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         .then(this.props.signupChange).then(this.props.toggleLogin) : this.setState({errors:true}))
   }else{
     // if data is invalid sets state to pop up an error message
@@ -110,7 +100,6 @@ const mapStateToProps = (state) => {
 
 function mapDispatchToProps(dispatch) {
   return {
-    updateUserEmail: (email) => dispatch(updateEmail(email)),
     toggleLogin: () => dispatch(toggleLogin())
     }
 }

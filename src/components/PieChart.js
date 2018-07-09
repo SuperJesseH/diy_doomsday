@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
-
 import {connect} from 'react-redux'
-
 import { Pie } from "react-chartjs"
 
 class PieChart extends Component {
-
+  // vizualizes index weights in a pie chart 
 
   render(){
 

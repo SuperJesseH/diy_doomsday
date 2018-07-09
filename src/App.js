@@ -6,6 +6,10 @@ import ProfileContainer from './components/ProfileContainer'
 
 
 class App extends Component {
+
+  //  controls wheather user sees login of homepage
+
+  
   constructor(){
     super()
 
@@ -14,22 +18,13 @@ class App extends Component {
     }
   }
 
-  /* // THESE FUNCTIONS: REFACTOR FOR REDUX !!!!
-  //
-  // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! */
-
   activateRegister = () =>{
     this.setState({register:true})
   }
 
   render() {
-          //console.log(this.props.LoggedIn);
     return (
-
       <div className="App">
-        {/* // THIS toggleSign REFACTOR FOR REDUX !!!!
-        //
-        // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! */}
         {localStorage.id && localStorage.id !== "undefined" ? <ProfileContainer /> : this.state.register ? <RegisterForm /> : <LoginForm signUp={this.activateRegister} />}
       </div>
     );

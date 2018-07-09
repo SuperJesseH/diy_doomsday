@@ -15,13 +15,6 @@ class RegisterForm extends Component {
   }
   // Login form from semantic
 
-  handleFormChange = event => {
-    // let input = event.target.value
-    // this.props.updateUserEmail(input)
-  }
-
-
-
   handelRegister = event => {
     // grabs all form data out of the event and packages it in an object
     let userData = {}
@@ -48,9 +41,6 @@ class RegisterForm extends Component {
         localStorage.setItem('token', json.token)
         localStorage.setItem('id', json.id);
       })
-      // THIS PROPS SIGNUPCHANGE REFACTOR FOR REDUX !!!!
-      //
-      // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
       .then(this.props.signupChange).then(this.props.toggleLogin).catch(()=>this.setState({errors:true}))
     }else{
       // if data is invalid sets state to pop up an error message

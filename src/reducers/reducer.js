@@ -9,14 +9,6 @@ const defaultState = {
 function reducer(state = defaultState, action){
   console.log(action.type);
   switch (action.type) {
-    // case "UPDATE_EMAIL":
-    //   let newUserEmail = {...state,
-    //     User: {
-    //       email: action.payload
-    //     }
-    //   }
-    //   console.log(newUserEmail);
-    //   return newUserEmail
     case "LOGIN_TOGGLE":
       return {...state, LoggedIn:!state.LoggedIn}
 
@@ -32,7 +24,7 @@ function reducer(state = defaultState, action){
 
     case "SET_DOOM_VALUES":
       return {...state, doomIndexData:action.payload}
-      
+
     case "GET_USER_DATASETS":
     console.log("maurie")
       return {...state, UserDatasets:action.payload}

@@ -1,5 +1,6 @@
+// Various redux actions for controlling state
+
 export function updateEmail(email) {
-  // debugger
   return {type: "UPDATE_EMAIL", payload: email}
 }
 
@@ -25,6 +26,8 @@ export function UpdateUserDatasets(userDataObj){
     })
     return {type: "UPDATE_USER_DATASETS", payload:userDataObj}
 }
+
+// Async redux actions  
 
 export function setDoomIndexValues(){
   return dispatch => {

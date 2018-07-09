@@ -1,20 +1,21 @@
 import React, { Component } from 'react';
-
 import {connect} from 'react-redux'
-
 import { Line } from "react-chartjs"
 
 class LineChart extends Component {
 
+  // graphs a line chart of previous 30 days of doom index values
+
   render(){
 
-    // MOVE THIS UP TO DataVizContainer
     let labels = []
     let data = []
+
+    // reverses data order for display
     if (this.props.doomIndexData){
       for (let item of this.props.doomIndexData){
-          labels.push(Object.keys(item)[0])
-          data.push(Object.values(item)[0])
+          labels.unshift(Object.keys(item)[0])
+          data.unshift(Object.values(item)[0])
       }
     }
 
