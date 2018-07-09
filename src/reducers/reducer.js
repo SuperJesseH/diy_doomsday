@@ -8,7 +8,7 @@ const defaultState = {
 }
 
 function reducer(state = defaultState, action){
-  console.log(action.type);
+  
   switch (action.type) {
     case "LOGIN_TOGGLE":
       return {...state, LoggedIn:!state.LoggedIn}

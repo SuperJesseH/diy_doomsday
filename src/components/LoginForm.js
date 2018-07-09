@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux'
 import { Button, Form, Grid, Header, Image, Message, Segment } from 'semantic-ui-react'
-import {updateEmail} from '../actions/action'
 import {toggleLogin} from '../actions/action'
 
 class LoginForm extends Component {
@@ -45,7 +44,6 @@ handelLogin = event => {
 }
 
   render() {
-    console.log(this.props);
     return (
       <div className='login-form'>
         {/*

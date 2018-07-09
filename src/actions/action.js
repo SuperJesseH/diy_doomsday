@@ -46,10 +46,7 @@ export function setDoomIndexValues(){
 
 export function getUserDatasets(){
   return dispatch => {  fetch(`http://localhost:3000/api/v1/user_datasets/${localStorage.id}`)
-    .then(resp => {
-      console.log("resp is", resp);
-      return resp.json()
-    })
+    .then(resp => {return resp.json()})
     .then(json => {
       dispatch({type:"GET_USER_DATASETS", payload: json})
     }
