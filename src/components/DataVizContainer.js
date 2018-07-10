@@ -19,7 +19,7 @@ class DataVizContainer extends Component {
         <br/>
         <div className="ui grid">
 
-          <div className="four wide column" style={{"margin-left":"3em", "fontSize": "2em"}}>
+          <div className="four wide column" style={{"marginLeft":"3em", "fontSize": "2em"}}>
             <h3>Doom Indicators</h3>
           </div>
           <div className="two wide column"> </div>

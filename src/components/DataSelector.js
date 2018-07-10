@@ -11,11 +11,11 @@ class DataSelector extends Component{
   render(){
     return(
       <React.Fragment>
-      <div className="ui segment" style={{"margin-left": "2.5em", "margin-right":"2.5em"}}>
-        <h3 style={{"margin-left": "2.5em"}}>Doom Metrics</h3>
+      <div className="ui segment" style={{"marginLeft": "2.5em", "marginRight":"2.5em"}}>
+        <h3 style={{"marginLeft": "2.5em"}}>Doom Metrics</h3>
       </div>
 
-      <div className="ui cards" style={{"margin-left": "2.5em", "margin-right": "2.5em"}}>
+      <div className="ui cards" style={{"marginLeft": "2.5em", "marginRight": "2.5em"}}>
         {/* IF datasets have loaded, render them, else display error */}
         {this.props.Datasets && this.props.UserDatasets? this.props.Datasets.map((item)=><DataSet name={item.name} src={item.srcName} desc={item.desc} id={item.id} key={item.id} className="card"/>) : "Error: Cannot Access Database"}
       </div>

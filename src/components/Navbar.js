@@ -20,9 +20,9 @@ handleClick = (e) =>{
       const yesterdayChange = Math.round(((todaysDoom - yestrdayDoom)/ Math.abs(yestrdayDoom))*100)
 
     return(
-      <div className="ui menu" style={{"margin-left": "2.5em", "margin-right": "2.5em"}}>
+      <div className="ui menu" style={{"marginLeft": "2.5em", "marginRight": "2.5em"}}>
           <img alt="DIY Doom Index" src={logo} style={{width: 294, height:100, borderRadius:4}}></img>
-          <div className="ui statistics" style={{"margin-left": "auto", "margin-right": "auto"}}>
+          <div className="ui statistics" style={{"marginLeft": "auto", "marginRight": "auto"}}>
             <div className="statistic">
               <div className="value">
                 {todaysDoom.toLocaleString()}
