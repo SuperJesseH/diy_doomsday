@@ -27,45 +27,25 @@ class DataVizContainer extends Component {
 
         <br/>
         <div className="ui grid">
+
+          <div className="four wide column" style={{"margin-left":"3em", "fontSize": "2em"}}>
+            <h3>Doom Indicators</h3>
+          </div>
+          <div className="two wide column"> </div>
           <div className="one wide column"> </div>
-          <div className="four wide column">Doom Indicators</div>
-          <div className="two wide column"> </div>
-          <div className="two wide column"> </div>
-          <div className="four wide column">30 day Doom Index</div>
+          <div className="four wide column" style={{"fontSize": "2em"}}>
+            <h3>30 Day Doom Index</h3>
+          </div>
 
         </div>
         <div className="ui grid">
           <div className="three wide column"><PieChart/></div>
-
           <div className="four wide column"><LineChart /></div>
 
         </div>
       </div>
 
     )
-
-
-    // return(
-    //   <div>
-    //   <h3>Your Doomsday Stats</h3>
-    //   <div className="ui divider"></div>
-    //     <div className="label">
-    //       Doom Index
-    //     </div>
-    //     <div className="value">
-    //       {todaysDoom}
-    //     </div>
-    //     <div className="label">
-    //       Δ since Last Week
-    //     </div>
-    //     <div className="value">
-    //       {Math.round(((todaysDoom - weekAgoDoom)/ Math.abs(weekAgoDoom))*100)}%
-    //     </div>
-    //     <PieChart />
-    //     <LineChart />
-    //   </div>
-    //
-    // )
   }
 
 
