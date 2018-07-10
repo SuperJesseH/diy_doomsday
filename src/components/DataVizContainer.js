@@ -13,31 +13,59 @@ class DataVizContainer extends Component {
   }
 
   render(){
-    const todaysDoom = this.props.doomIndexData ? Math.round(Object.values(this.props.doomIndexData[0])*1000) : null
+    const todaysDoom = this.props.doomIndexData ? Math.round(Object.values(this.props.doomIndexData[0])*1000) : 0
 
-    const weekAgoDoom = this.props.doomIndexData ? Math.round(Object.values(this.props.doomIndexData[7])*1000) : null
+    const yestrdayDoom = this.props.doomIndexData ? Math.round(Object.values(this.props.doomIndexData[1])*1000) : 0
+
+    const weekAgoDoom = this.props.doomIndexData ? Math.round(Object.values(this.props.doomIndexData[7])*1000) : 0
+
+    const lastWeekChange = Math.round(((todaysDoom - weekAgoDoom)/ Math.abs(weekAgoDoom))*100)
+
+    const yesterdayChange = Math.round(((todaysDoom - yestrdayDoom)/ Math.abs(yestrdayDoom))*100)
     return(
       <div>
-      <h3>Your Doomsday Stats</h3>
-      <div className="ui divider"></div>
-        <div className="label">
-          Doom Index
-        </div>
 
-        <div className="value">
-          {todaysDoom}
+        <br/>
+        <div className="ui grid">
+          <div className="one wide column"> </div>
+          <div className="four wide column">Doom Indicators</div>
+          <div className="two wide column"> </div>
+          <div className="two wide column"> </div>
+          <div className="four wide column">30 day Doom Index</div>
+
         </div>
-        <div className="label">
-          Δ since Last Week
+        <div className="ui grid">
+          <div className="three wide column"><PieChart/></div>
+
+          <div className="four wide column"><LineChart /></div>
+
         </div>
-        <div className="value">
-          {Math.round(((todaysDoom - weekAgoDoom)/ Math.abs(weekAgoDoom))*100)}%
-        </div>
-        <PieChart />
-        <LineChart />
       </div>
 
     )
+
+
+    // return(
+    //   <div>
+    //   <h3>Your Doomsday Stats</h3>
+    //   <div className="ui divider"></div>
+    //     <div className="label">
+    //       Doom Index
+    //     </div>
+    //     <div className="value">
+    //       {todaysDoom}
+    //     </div>
+    //     <div className="label">
+    //       Δ since Last Week
+    //     </div>
+    //     <div className="value">
+    //       {Math.round(((todaysDoom - weekAgoDoom)/ Math.abs(weekAgoDoom))*100)}%
+    //     </div>
+    //     <PieChart />
+    //     <LineChart />
+    //   </div>
+    //
+    // )
   }
 
 

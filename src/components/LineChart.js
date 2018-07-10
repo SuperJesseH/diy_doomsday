@@ -21,6 +21,7 @@ class LineChart extends Component {
     // reverses data order for display
     if (this.props.doomIndexData){
       for (let item of this.props.doomIndexData){
+          console.log(Object.keys(item)[0]);
           labels.unshift(Object.keys(item)[0])
           data.unshift(Math.round(Object.values(item)[0]*1000))
       }
@@ -44,9 +45,11 @@ class LineChart extends Component {
         }
     }
 
+    console.log(window.innerWidth);
+
     return(
       <div>
-        <Line width={window.innerWidth - 100} height={window.innerHeight * 0.2} data={chartData} options={chartOptions}/>
+        <Line width={window.innerWidth - window.innerWidth*0.225} height={window.innerHeight * 0.2} data={chartData} options={chartOptions}/>
       </div>
     )
   }
