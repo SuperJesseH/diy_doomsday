@@ -21,12 +21,10 @@ class LineChart extends Component {
     // reverses data order for display
     if (this.props.doomIndexData){
       for (let item of this.props.doomIndexData){
-          console.log(Object.keys(item)[0]);
           labels.unshift(Object.keys(item)[0])
           data.unshift(Math.round(Object.values(item)[0]*1000))
       }
     }
-
     const chartData = {
         labels: labels,
         datasets: [{
@@ -45,7 +43,6 @@ class LineChart extends Component {
         }
     }
 
-    console.log(window.innerWidth);
 
     return(
       <div>

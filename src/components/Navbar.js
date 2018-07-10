@@ -12,15 +12,13 @@ handleClick = (e) =>{
 }
 
   render(){
-    const todaysDoom = this.props.doomIndexData ? Math.round(Object.values(this.props.doomIndexData[0])*1000) : 0
 
-    const yestrdayDoom = this.props.doomIndexData ? Math.round(Object.values(this.props.doomIndexData[1])*1000) : 0
+      const todaysDoom = this.props.doomIndexData ? Math.round(Object.values(this.props.doomIndexData[0])*1000) : 0
+      const yestrdayDoom = this.props.doomIndexData ? Math.round(Object.values(this.props.doomIndexData[1])*1000) : 0
+      const weekAgoDoom = this.props.doomIndexData ? Math.round(Object.values(this.props.doomIndexData[7])*1000) : 0
+      const lastWeekChange = Math.round(((todaysDoom - weekAgoDoom)/ Math.abs(weekAgoDoom))*100)
+      const yesterdayChange = Math.round(((todaysDoom - yestrdayDoom)/ Math.abs(yestrdayDoom))*100)
 
-    const weekAgoDoom = this.props.doomIndexData ? Math.round(Object.values(this.props.doomIndexData[7])*1000) : 0
-
-    const lastWeekChange = Math.round(((todaysDoom - weekAgoDoom)/ Math.abs(weekAgoDoom))*100)
-
-    const yesterdayChange = Math.round(((todaysDoom - yestrdayDoom)/ Math.abs(yestrdayDoom))*100)
     return(
       <div className="ui menu" style={{"margin-left": "2.5em", "margin-right": "2.5em"}}>
           <img alt="DIY Doom Index" src={logo} style={{width: 294, height:100, borderRadius:4}}></img>

@@ -28,6 +28,7 @@ class ProfileContainer extends Component {
   render() {
     return (
     <div className="App">
+      <br/>
         <NavBar />
         <DataVizContainer />
         <DataSelector />

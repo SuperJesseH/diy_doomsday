@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {connect} from 'react-redux'
 import { Pie } from "react-chartjs"
 import {getUserDatasets} from '../actions/action'
+import {Header} from 'semantic-ui-react'
 
 class PieChart extends Component {
   // vizualizes index weights in a pie chart
@@ -30,7 +31,15 @@ class PieChart extends Component {
     }
 
     return(
-      <Pie className="card" data={pieSlices} options={chartOptions}/>
+      <reactFragment>
+      {this.props.UserDatasets && this.props.UserDatasets[0] ? <Pie className="card" data={pieSlices} options={chartOptions}/> :
+      <reactFragment>
+        <Header as='h2' color='red' textAlign='center'>
+           Adjust Doom Metrics To Activate Index
+        </Header>
+      </reactFragment>
+      }
+      </reactFragment>
     )
   }
 }

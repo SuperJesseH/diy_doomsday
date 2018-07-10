@@ -3,6 +3,7 @@ import {connect} from 'react-redux'
 import { Button, Form, Grid, Header, Image, Message, Segment } from 'semantic-ui-react'
 import {toggleLogin} from '../actions/action'
 
+
 class LoginForm extends Component {
 
   constructor(props){
@@ -60,8 +61,11 @@ handelLogin = event => {
         `}</style>
         <Grid textAlign='center' style={{ height: '100%' }} verticalAlign='middle'>
           <Grid.Column style={{ maxWidth: 450 }}>
+            <Header as='h1' color='teal' textAlign='center'>
+               DIY DOOM INDEX
+            </Header>
             <Header as='h2' color='teal' textAlign='center'>
-              <Image src='/logo.png' /> Log-in to your account
+               Log-in to your account
             </Header>
             <Form size='large' onSubmit={this.handelLogin}>
               <Segment stacked>

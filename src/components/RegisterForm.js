@@ -69,9 +69,11 @@ class RegisterForm extends Component {
           <Grid textAlign='center' style={{ height: '100%' }} verticalAlign='middle'>
 
             <Grid.Column style={{ maxWidth: 450 }}>
-
+              <Header as='h1' color='teal' textAlign='center'>
+                 DIY DOOM INDEX
+              </Header>
               <Header as='h2' color='teal' textAlign='center'>
-                <Image src='/logo.png' /> Create an account
+                Create an account
               </Header>
 
               <Form size='large' onSubmit={this.handelRegister}>

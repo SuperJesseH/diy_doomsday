@@ -88,10 +88,11 @@ handleDoomCorralClick = (e) => {
         {!this.state.dataRel ? null :
         <form className="ui form">
                       This Metric is...
-            <div className="ui buttons">
+            <div className="ui buttons" style={{"margin-left": "2.5%", "margin-right": "auto"}}>
               <button onClick={this.handleDoomCorralClick} className={this.state.dataRel.positive_corral ? "ui negative  button" : "ui button"}>Pro Doom</button>
               <div className="or"></div>
               <button onClick={this.handleNotDoomCorralClick} className={!this.state.dataRel.positive_corral ? "ui positive  button" : "ui button"}>Anti Doom</button>
+              <br/>
             </div>
             This Metric is this important...
         <div className="ui range">
@@ -106,7 +107,8 @@ handleDoomCorralClick = (e) => {
                   }
                 }}/>
         </div>
-        <div className="ui buttons">
+        <br/>
+        <div className="ui buttons" style={{"margin-left": "20%", "margin-right": "auto"}}>
           <button onClick={this.handleSubmit} className={this.state.changes ? "ui blue inverted active button" : "ui active button"}>Confirm Changes</button>
         </div>
       </form>}
