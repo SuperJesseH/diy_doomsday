@@ -27,7 +27,7 @@ handelLogin = event => {
   //checks if the basic requirements are met (email, password)
   if (userData.password && userData.email) {
     // send a post to backend to create a new user, recive a token, and unmount registration screen
-    fetch("http://localhost:3000/api/v1/sessions", {
+    fetch("https://diy-doom-index.herokuapp.com/api/v1/sessions", {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
