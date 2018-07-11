@@ -61,6 +61,10 @@ handelLogin = event => {
         `}</style>
         <Grid textAlign='center' style={{ height: '100%' }} verticalAlign='middle'>
           <Grid.Column style={{ maxWidth: 450 }}>
+            {!!navigator.userAgent.match(/(iPad)|(iPhone)|(iPod)|(android)|(webOS)/i) ?
+               <Header as='h1' color='red' textAlign='center'>
+                           Please Use DIY Doom Index on a widescreen (desktop) browser. Mobile not yet configured.
+              </Header>: null }
             <Header as='h1' color='teal' textAlign='center'>
                DIY DOOM INDEX
             </Header>
