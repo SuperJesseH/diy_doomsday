@@ -31,15 +31,15 @@ class PieChart extends Component {
     }
 
     return(
-      <reactFragment>
+      <React.Fragment>
       {this.props.UserDatasets && this.props.UserDatasets[0] ? <Pie className="card" data={pieSlices} options={chartOptions}/> :
-      <reactFragment>
+      <React.Fragment>
         <Header as='h2' color='red' textAlign='center'>
            Adjust Doom Metrics To Activate Index
         </Header>
-      </reactFragment>
+      </React.Fragment>
       }
-      </reactFragment>
+      </React.Fragment>
     )
   }
 }

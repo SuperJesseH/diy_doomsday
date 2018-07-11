@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {connect} from 'react-redux'
 import logo from '../logo3.png'
 import {toggleLogin} from '../actions/action'
+import {clearState} from '../actions/action'
 
 class NavBar extends Component {
   // renders a very basic nav bar
@@ -9,6 +10,7 @@ class NavBar extends Component {
 handleClick = (e) =>{
   localStorage.clear()
   this.props.toggleLogin()
+  this.props.clearState()
 }
 
   render(){
@@ -74,7 +76,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) =>{
   return {
-    toggleLogin: () => dispatch(toggleLogin())
+    toggleLogin: () => dispatch(toggleLogin()),
+    clearState: () => dispatch(clearState())
   }
 
 }

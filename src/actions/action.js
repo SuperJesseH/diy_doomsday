@@ -8,6 +8,10 @@ export function toggleLogin(){
   return {type: "LOGIN_TOGGLE", payload:null}
 }
 
+export function clearState(){
+  return {type: "CLEAR_STATE", payload:null}
+}
+
 export function storeDatasets(dataJson){
   return {type: "STORE_DATASETS", payload:dataJson}
 }

@@ -57,9 +57,6 @@ handleDoomCorralClick = (e) => {
     // sends updated data set weights and correlations to backend and makes
     // requests for updated index values - see redux actions
     e.preventDefault()
-     // this.props.UpdateUserDatasets(this.state.dataRel)
-     // .then(this.props.getUserDatasets())
-     // .then(this.props.setDoomIndexValues())
 
      this.setState({...this.state,
       dataRel: {...this.state.dataRel}, changes: false
@@ -87,16 +84,16 @@ handleDoomCorralClick = (e) => {
         {/*  If we have data prefrences show them */}
         {!this.state.dataRel ? null :
         <form className="ui form">
-                      This Metric is...
-            <div className="ui buttons" style={{"margin-left": "2.5%", "margin-right": "auto"}}>
+             <div style={{"textAlign": "center"}}>Select Polarity</div>
+            <div className="ui buttons" style={{"marginLeft": "2.5%", "marginRight": "auto"}}>
               <button onClick={this.handleDoomCorralClick} className={this.state.dataRel.positive_corral ? "ui negative  button" : "ui button"}>Pro Doom</button>
               <div className="or"></div>
               <button onClick={this.handleNotDoomCorralClick} className={!this.state.dataRel.positive_corral ? "ui positive  button" : "ui button"}>Anti Doom</button>
-              <br/>
             </div>
-            This Metric is this important...
+            <div style={{"borderWidth": "5px"}}>
+            <div style={{"textAlign": "center"}}>Select Significance Level Below</div>
         <div className="ui range">
-          <Slider color="grey" inverted={false}
+          <Slider color="blue" inverted={true}
                   settings={{
                   start: this.state.dataRel.weight,
                   min:0,
@@ -107,8 +104,9 @@ handleDoomCorralClick = (e) => {
                   }
                 }}/>
         </div>
+        </div>
         <br/>
-        <div className="ui buttons" style={{"margin-left": "20%", "margin-right": "auto"}}>
+        <div className="ui buttons" style={{"marginLeft": "18%", "marginRight": "auto"}}>
           <button onClick={this.handleSubmit} className={this.state.changes ? "ui blue inverted active button" : "ui active button"}>Confirm Changes</button>
         </div>
       </form>}

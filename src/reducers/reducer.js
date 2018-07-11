@@ -8,7 +8,7 @@ const defaultState = {
 }
 
 function reducer(state = defaultState, action){
-  
+
   switch (action.type) {
     case "LOGIN_TOGGLE":
       return {...state, LoggedIn:!state.LoggedIn}
@@ -28,7 +28,8 @@ function reducer(state = defaultState, action){
 
     case "GET_USER_DATASETS":
       return {...state, UserDatasets:action.payload}
-
+    case "CLEAR_STATE":
+      return {defaultState}
     default:
       return state
   }
