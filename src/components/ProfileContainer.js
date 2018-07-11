@@ -17,7 +17,7 @@ class ProfileContainer extends Component {
  componentDidMount(){
 
    //grab avalable datasets from backend and make names and descriptions avalible to display components through redux
-   fetch("http://localhost:3000/api/v1/datasets")
+   fetch("https://diy-doom-index.herokuapp.com/api/v1/datasets")
    .then(resp => resp.json())
    .then(json=>this.props.storeDatasets(json))
 

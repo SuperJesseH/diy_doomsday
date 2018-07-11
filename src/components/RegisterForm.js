@@ -30,7 +30,7 @@ class RegisterForm extends Component {
       // send a post to backend to create a new user, recive a token, and unmount registration screen
       console.log("OK IM AUTHING YOU SWEETIE!!", userData);
 
-      fetch("http://localhost:3000/api/v1/users", {
+      fetch("https://diy-doom-index.herokuapp.com/api/v1/users", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
