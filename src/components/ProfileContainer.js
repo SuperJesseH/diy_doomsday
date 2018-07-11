@@ -15,11 +15,9 @@ class ProfileContainer extends Component {
   // contains user home page
 
  componentDidMount(){
-   fetch("https://diy-doom-index.herokuapp.com/api/v1/datasets").then(json=>json.json()).then(console.log)
 
    //grab avalable datasets from backend and make names and descriptions avalible to display components through redux
-   fetch("https://diy-doom-index.herokuapp.com/api/v1/datasets")
-   .then(resp => resp.json())
+   fetch("https://diy-doom-index.herokuapp.com/api/v1/datasets").then(resp => resp.json())
    .then(json=>this.props.storeDatasets(json))
 
    this.props.getUserDatasets()
