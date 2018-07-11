@@ -27,7 +27,6 @@ class ProfileContainer extends Component {
 
 
   render() {
-    console.log(this.props.Help);
     return (
     <div className="App">
       <br/>
