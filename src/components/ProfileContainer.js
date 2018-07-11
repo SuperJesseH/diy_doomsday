@@ -3,6 +3,7 @@ import {connect} from 'react-redux'
 import NavBar from './Navbar';
 import DataVizContainer from './DataVizContainer';
 import DataSelector from './DataSelector';
+import HelpModal from './HelpModal';
 import {storeDatasets} from '../actions/action'
 import {storeUserDatasets} from '../actions/action'
 import {getUserDatasets} from '../actions/action'
@@ -26,12 +27,21 @@ class ProfileContainer extends Component {
 
 
   render() {
+    console.log(this.props.Help);
     return (
     <div className="App">
       <br/>
-        <NavBar />
-        <DataVizContainer />
-        <DataSelector />
+
+        {this.props.Help ?
+          <HelpModal />
+          :
+          <div>
+            <NavBar />
+            <DataVizContainer />
+            <DataSelector />
+          </div>
+        }
+
       </div>
     );
   }

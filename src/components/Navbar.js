@@ -3,6 +3,7 @@ import {connect} from 'react-redux'
 import logo from '../logo3.png'
 import {toggleLogin} from '../actions/action'
 import {clearState} from '../actions/action'
+import {toggleHelp} from '../actions/action'
 
 class NavBar extends Component {
   // renders a very basic nav bar
@@ -62,7 +63,7 @@ handleClick = (e) =>{
 
           <div className="right menu">
           <a className="item" onClick={this.handleClick}>Sign Out</a>
-          <a className="item">Help</a>
+          <a className="item" onClick={this.props.toggleHelp}>Help</a>
         </div>
       </div>
     )
@@ -77,6 +78,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) =>{
   return {
     toggleLogin: () => dispatch(toggleLogin()),
+    toggleHelp: () => dispatch(toggleHelp()),
     clearState: () => dispatch(clearState())
   }
 

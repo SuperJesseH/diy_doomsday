@@ -1,6 +1,7 @@
 const defaultState = {
   //User: {id:null, token:null},
   LoggedIn: false,
+  Help: false,
   Datasets: null,
   UserDatasets: null,
   doomIndexData: null,
@@ -12,6 +13,9 @@ function reducer(state = defaultState, action){
   switch (action.type) {
     case "LOGIN_TOGGLE":
       return {...state, LoggedIn:!state.LoggedIn}
+
+    case "HELP_TOGGLE":
+      return {...state, Help:!state.Help}
 
     case "STORE_DATASETS":
       return {...state, Datasets:action.payload}

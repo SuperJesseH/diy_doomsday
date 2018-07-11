@@ -9,7 +9,7 @@ class App extends Component {
 
   //  controls wheather user sees login of homepage
 
-  
+
   constructor(){
     super()
 
