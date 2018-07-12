@@ -28,7 +28,6 @@ class RegisterForm extends Component {
     if (userData.password && userData.name && userData.email && userData["confirm password"] === userData.password){
 
       // send a post to backend to create a new user, recive a token, and unmount registration screen
-      console.log("OK IM AUTHING YOU SWEETIE!!", userData);
 
       fetch("https://diy-doom-index.herokuapp.com/api/v1/users", {
       method: "POST",

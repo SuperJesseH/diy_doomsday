@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux'
-import { Header, Modal } from 'semantic-ui-react'
+// import { Header, Modal } from 'semantic-ui-react'
 import {toggleHelp} from '../actions/action'
 import img from '../modalHelp.png'
 
