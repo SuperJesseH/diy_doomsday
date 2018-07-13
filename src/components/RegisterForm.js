@@ -81,8 +81,7 @@ class RegisterForm extends Component {
 
                   <Form.Input fluid icon='user' iconPosition='left' placeholder='name' onKeyUp={this.handleChange}/>
 
-                  <Form.Input fluid icon='envelope outline
-                  ' iconPosition='left' placeholder='email' onKeyUp={this.handleChange}/>
+                  <Form.Input fluid icon='envelope outline' iconPosition='left' placeholder='email' onKeyUp={this.handleChange}/>
 
                   <Form.Input
                     fluid
